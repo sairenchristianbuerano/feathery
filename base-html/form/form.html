@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feathery Form</title>
+  <script src="https://cdn.jsdelivr.net/npm/@feathery/react@latest/umd/index.js"></script>
+  <style>
+    html,body { height: 100%; margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    #container { min-height: 100%; box-sizing: border-box; padding: 1rem; }
+  </style>
+</head>
+<body>
+
+    <script src="https://cdn.jsdelivr.net/npm/@feathery/react@latest/umd/index.js"></script>
+    <div id='container'></div>
+    <script>
+    (() => {
+        Feathery.init('6a0d75fb-625b-4b75-a7ca-b1560c416685')
+        const loginEnabled = true;
+        Feathery.renderAt('container', { formId: "cwBWeb" }, loginEnabled);
+    })();
+    </script>
+</body>
+</html>
