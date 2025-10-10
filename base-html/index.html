@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<style>
+  /* Prevent horizontal scroll inside iframe and modal */
+  iframe {
+    overflow-x: hidden;
+  }
+
+  /* Force content inside iframe to scale properly */
+  iframe html, iframe body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+</style>
+
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,7 +40,7 @@
 
   <main class="pt-20 max-w-4xl mx-auto p-6">
     <h1 class="text-3xl font-semibold mb-4">Welcome</h1>
-    <p class="text-gray-700">Page content goes here. Click Contact to open the Feathery form in a modal.</p>
+    <p class="text-gray-700">Page content goes here. Click Sign In to open the Feathery form in a modal.</p>
   </main>
 
   <div id="modal" class="fixed inset-0 hidden items-center justify-center z-30">
