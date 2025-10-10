@@ -1,0 +1,22 @@
+{
+  "name": "my-feathery-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@feathery/react": "^2.4.92",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^5.0.4",
+    "typescript": "^5.9.3",
+    "vite": "^5.2.0"
+  }
+}
