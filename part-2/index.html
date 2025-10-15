@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+  /* Prevent horizontal scroll inside iframe and modal */
+  iframe {
+    overflow-x: hidden;
+  }
+
+  /* Force content inside iframe to scale properly */
+  iframe html, iframe body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+</style>
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feathery + Tailwind Navbar</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <nav class="bg-white shadow-md p-4 flex justify-between items-center fixed w-full top-0 z-20">
+    <div class="text-xl font-bold">Feathery</div>
+    <ul class="flex space-x-6 items-center">
+      <li><a href="#" class="text-gray-600 hover:text-gray-900">Home</a></li>
+      <li><a href="#" class="text-gray-600 hover:text-gray-900">About</a></li>
+      <li><a href="#" class="text-gray-600 hover:text-gray-900">Services</a></li>
+      <li>
+        <!-- Live SDK Button -->
+        <button id="liveSdkBtn" class="text-white bg-red-400 rounded-md px-4 py-2 hover:bg-red-500 focus:outline-none">
+          Live SDK
+        </button>
+      </li>
+      <li>
+        <!-- Test SDK Button -->
+        <button id="testSdkBtn" class="text-white bg-red-400 rounded-md px-4 py-2 hover:bg-red-500 focus:outline-none">
+          Test SDK
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+
+  <main class="pt-20 max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-semibold mb-4">Welcome</h1>
+    <p class="text-gray-700">Page content goes here. Click Sign In to open the Feathery form in a modal.</p>
+  </main>
+
+  <div id="modal" class="fixed inset-0 hidden items-center justify-center z-30">
+    <!-- overlay -->
+    <div id="modalOverlay" class="absolute inset-0 bg-black/50"></div>
+
+    <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-3xl mx-4 z-40 overflow-hidden">
+      <div class="flex justify-between items-center p-4 border-b">
+        <h3 class="text-lg font-medium">Sign In</h3>
+        <button id="closeModal" class="text-gray-500 hover:text-gray-700 focus:outline-none">✕</button>
+      </div>
+
+      <div class="h-[70vh]">
+        <iframe id="formFrame" src="" class="w-full h-full border-0 overflow-hidden" title="Sign In form"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const liveSdkBtn = document.getElementById('liveSdkBtn');
+      const testSdkBtn = document.getElementById('testSdkBtn');
+      const modal = document.getElementById('modal');
+      const modalOverlay = document.getElementById('modalOverlay');
+      const closeModal = document.getElementById('closeModal');
+      const formFrame = document.getElementById('formFrame');
+
+      function openModalWithForm(url) {
+        formFrame.src = url;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+
+      function hideModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        formFrame.src = 'about:blank';
+      }
+
+      // Open Live SDK Form
+      liveSdkBtn.addEventListener('click', () => {
+        openModalWithForm('form/form.html');
+      });
+
+      // Open Test SDK Form
+      testSdkBtn.addEventListener('click', () => {
+        openModalWithForm('form/form-test.html');
+      });
+
+      closeModal.addEventListener('click', hideModal);
+      modalOverlay.addEventListener('click', hideModal);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) hideModal();
+      });
+    })();
+  </script>
+
+</body>
+</html>
